@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #242a24;
+  background: #f7f7f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --ink: #242a24;
+  --muted: #747a72;
+  --line: #e5e5df;
+  --accent: #bd694b;
+  --paper: #fff;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, input, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+button { cursor: pointer; }
+
+.navbar {
+  min-height: 78px;
+  padding: 0 clamp(1.25rem, 6vw, 6rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  background: #f7f7f4;
+  border-bottom: 1px solid rgba(36, 42, 36, .08);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.brand { text-decoration: none; font-size: 1.65rem; font-weight: 700; letter-spacing: -.08em; }
+.brand span { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 2rem; margin-left: auto; margin-right: 1.5rem; }
+.nav-links a, .cart-link { font-size: .88rem; text-decoration: none; }
+.nav-links a { color: var(--muted); }
+.nav-links a.active, .nav-links a:hover { color: var(--ink); }
+.cart-link { display: flex; gap: .55rem; align-items: center; font-weight: 600; }
+.cart-count { display: inline-grid; place-items: center; width: 23px; height: 23px; border-radius: 50%; color: #fff; background: var(--ink); font-size: .72rem; }
+
+.hero { position: relative; min-height: 570px; display: grid; grid-template-columns: 1fr 1fr; background: #e9e9df; overflow: hidden; }
+.hero-copy { align-self: center; justify-self: center; width: min(460px, 82%); padding: 4rem 0 5rem; z-index: 1; }
+.eyebrow { margin: 0 0 .85rem; text-transform: uppercase; letter-spacing: .14em; color: var(--accent); font-size: .69rem; font-weight: 700; }
+.hero h1, .page-title h1, .detail-copy h1 { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; letter-spacing: -.045em; }
+.hero h1 { font-size: clamp(3rem, 5vw, 5rem); line-height: 1.05; max-width: 530px; margin: 0 0 1.25rem; }
+.hero-copy > p:not(.eyebrow) { color: #60665e; line-height: 1.8; max-width: 380px; margin-bottom: 2rem; }
+.hero-image { background: linear-gradient(90deg, rgba(233,233,223,.15), transparent 25%), url('https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=1400&q=85') center 48% / cover; min-height: 570px; }
+.hero-note { position: absolute; right: 2rem; bottom: 1.5rem; color: white; text-transform: uppercase; letter-spacing: .13em; font-size: .68rem; }
+.button { border: 0; display: inline-flex; gap: 1.5rem; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; text-decoration: none; font-weight: 600; font-size: .85rem; transition: background .2s, transform .2s; }
+.button:hover { transform: translateY(-1px); }
+.button-dark { color: white; background: var(--ink); }
+.button-dark:hover { background: #414941; }
+.button span { font-size: 1.1rem; }
+.page-shell { width: min(1240px, calc(100% - 3rem)); margin: 0 auto; }
+.section { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 2rem; }
+.section-heading h2 { margin: 0; font: 500 2.25rem 'Playfair Display', Georgia, serif; letter-spacing: -.04em; }
+.underlined-link, .back-link { text-decoration: none; font-size: .85rem; border-bottom: 1px solid currentColor; padding-bottom: .25rem; }
+.underlined-link:hover, .back-link:hover { color: var(--accent); }
+
+.page-content { padding-top: 4rem; padding-bottom: 6rem; }
+.page-title { margin-bottom: 2.5rem; }
+.page-title h1 { font-size: clamp(2.7rem, 5vw, 4rem); margin: 0 0 .6rem; line-height: 1.08; }
+.page-title > p:last-child { color: var(--muted); margin: .5rem 0 0; line-height: 1.7; }
+.catalog-controls { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+.category-filter { display: flex; gap: .5rem; flex-wrap: wrap; }
+.category-button { border: 1px solid var(--line); background: transparent; padding: .65rem .95rem; color: #5f655e; font-size: .8rem; }
+.category-button:hover, .category-button.active { border-color: var(--ink); background: var(--ink); color: white; }
+.search-field { display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid #aeb1aa; width: 220px; }
+.search-field input { border: 0; outline: 0; width: 100%; background: transparent; padding: .65rem 0; font-size: .82rem; }
+.search-field > span:last-child { font-size: 1.25rem; color: var(--muted); }
+.product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; }
+.product-card { min-width: 0; }
+.product-image-link { display: block; overflow: hidden; background: #eeeee9; aspect-ratio: 1 / 1.05; }
+.product-card img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .45s; }
+.product-image-link:hover img { transform: scale(1.04); }
+.product-card-content { padding: .9rem .1rem; }
+.product-card .eyebrow { font-size: .61rem; margin-bottom: .4rem; }
+.product-name { display: block; min-height: 2.8em; text-decoration: none; font-family: 'Playfair Display', Georgia, serif; font-size: 1.12rem; }
+.product-name:hover { color: var(--accent); }
+.product-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: .4rem; padding-top: .5rem; }
+.price-group { display: inline-flex; align-items: baseline; gap: .45rem; }
+.price { font-weight: 600; font-size: .9rem; }
+.original-price { color: #8d9189; text-decoration: line-through; font-size: .75rem; }
+.text-button { padding: .3rem 0; background: transparent; color: var(--accent); border: 0; font-size: .78rem; font-weight: 600; }
+.text-button:hover { color: #8e4933; }
+.notice, .error-state { padding: 1.25rem; background: #fff; color: var(--muted); }
+.error-state { color: #9e3f32; border-left: 3px solid #bd5947; }
+.loading-state { padding: 3rem 0; display: flex; gap: .75rem; align-items: center; color: var(--muted); }
+.spinner { width: 19px; height: 19px; border: 2px solid #d8d8d0; border-top-color: var(--accent); border-radius: 50%; animation: spin .75s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+.back-link { display: inline-block; margin-bottom: 2rem; border: 0; color: var(--muted); }
+.product-detail { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 7vw, 6rem); align-items: center; }
+.detail-image { background: #eeeee9; }
+.detail-image img { display: block; width: 100%; max-height: 650px; aspect-ratio: 1 / 1.05; object-fit: cover; }
+.detail-copy { max-width: 460px; }
+.detail-copy h1 { font-size: clamp(2.5rem, 4vw, 3.8rem); line-height: 1.08; margin: 0 0 1rem; }
+.detail-rating { font-size: .88rem; color: #a76539; }
+.detail-rating span { color: var(--muted); margin-left: .4rem; }
+.detail-price { font-size: 1.25rem; margin: 1.5rem 0; font-weight: 600; }
+.detail-price .original-price { margin-left: .65rem; font-size: .95rem; font-weight: 400; }
+.detail-description { color: var(--muted); font-size: .94rem; line-height: 1.9; margin-bottom: 2rem; }
+.add-detail-button { width: min(100%, 350px); }
+.shipping-note { color: var(--muted); font-size: .77rem; margin-top: 1rem; }
+
+.cart-title { margin-bottom: 2rem; }
+.cart-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, .8fr); gap: 4rem; align-items: start; }
+.cart-item { display: grid; grid-template-columns: 125px 1fr auto; gap: 1.25rem; padding: 1.25rem 0; border-top: 1px solid var(--line); }
+.cart-item > img { width: 125px; aspect-ratio: 1; object-fit: cover; background: #eee; }
+.cart-item-info .eyebrow { font-size: .6rem; margin-bottom: .45rem; }
+.cart-item-info h2 { margin: 0 0 .5rem; font: 500 1.2rem 'Playfair Display', Georgia, serif; }
+.cart-item-info .price { margin: 0 0 .75rem; }
+.quantity-control { display: inline-flex; align-items: center; border: 1px solid var(--line); }
+.quantity-control button { border: 0; background: transparent; width: 32px; height: 30px; font-size: 1rem; }
+.quantity-control button:hover { background: #efefe9; }
+.quantity-control span { min-width: 25px; text-align: center; font-size: .82rem; }
+.cart-item-end { display: flex; flex-direction: column; align-items: end; gap: 1.3rem; }
+.cart-item-end strong { font-size: .9rem; }
+.remove-button { border: 0; background: transparent; color: var(--muted); text-decoration: underline; font-size: .75rem; }
+.remove-button:hover { color: #a33f32; }
+.order-summary { background: #fff; padding: 1.5rem; }
+.order-summary h2 { margin: 0 0 1.4rem; font: 500 1.4rem 'Playfair Display', Georgia, serif; }
+.summary-row { display: flex; justify-content: space-between; gap: 1rem; margin: 1rem 0; color: var(--muted); font-size: .83rem; }
+.total-row { color: var(--ink); padding-top: 1rem; border-top: 1px solid var(--line); font-size: 1rem; }
+.checkout-button { width: 100%; margin-top: .7rem; }
+.continue-link { display: table; margin: 1rem auto 0; }
+.empty-cart { padding: 2rem; text-align: center; background: #fff; }
+.empty-cart p { color: var(--muted); margin: 0 0 1.5rem; }
+
+.contact-page { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.contact-page .page-title { padding-top: 1.5rem; }
+.contact-form { background: #fff; padding: 2rem; display: grid; gap: 1.2rem; }
+.contact-form label { display: grid; gap: .5rem; font-size: .8rem; font-weight: 600; }
+.contact-form input, .contact-form textarea { border: 1px solid var(--line); background: #fff; padding: .8rem; outline-color: var(--accent); resize: vertical; font-weight: 400; }
+.contact-form .button { justify-self: start; min-width: 180px; }
+.success-message { margin: 0; color: #276344; background: #edf6ef; padding: .8rem; font-size: .85rem; }
+.site-footer { display: flex; justify-content: space-between; gap: 1rem; padding: 1.5rem clamp(1.5rem, 6vw, 6rem); color: var(--muted); border-top: 1px solid var(--line); font-size: .75rem; }
+
+@media (max-width: 850px) {
+  .hero { min-height: 450px; grid-template-columns: 1fr .8fr; }
+  .hero-image { min-height: 450px; }
+  .hero h1 { font-size: 3.4rem; }
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cart-layout { gap: 2rem; }
+}
+@media (max-width: 600px) {
+  .navbar { min-height: 66px; padding: 0 1rem; gap: .75rem; }
+  .brand { font-size: 1.4rem; }
+  .nav-links { gap: .8rem; margin: 0 .3rem 0 auto; }
+  .nav-links a, .cart-link { font-size: .76rem; }
+  .cart-link { gap: .3rem; }
+  .hero { display: flex; min-height: 0; }
+  .hero-copy { width: 100%; padding: 4rem 1.5rem; }
+  .hero h1 { font-size: 3.1rem; }
+  .hero-image { display: none; }
+  .hero-note { color: var(--muted); right: 1.5rem; bottom: 1rem; }
+  .page-shell { width: min(100% - 2rem, 1240px); }
+  .section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .section-heading { align-items: start; gap: 1rem; flex-direction: column; }
+  .section-heading h2 { font-size: 1.9rem; }
+  .product-grid { gap: 1rem .75rem; }
+  .product-name { font-size: 1rem; }
+  .product-card-bottom { align-items: start; flex-direction: column; }
+  .page-content { padding-top: 2.5rem; padding-bottom: 4rem; }
+  .catalog-controls { align-items: stretch; flex-direction: column-reverse; }
+  .search-field { width: 100%; }
+  .category-filter { gap: .4rem; }
+  .category-button { padding: .55rem .65rem; font-size: .73rem; }
+  .product-detail { grid-template-columns: 1fr; gap: 2rem; }
+  .detail-image img { max-height: 420px; }
+  .cart-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .cart-item { grid-template-columns: 82px 1fr auto; gap: .8rem; }
+  .cart-item > img { width: 82px; }
+  .cart-item-info h2 { font-size: 1rem; }
+  .cart-item-end strong { font-size: .8rem; }
+  .contact-page { grid-template-columns: 1fr; gap: 1rem; }
+  .contact-page .page-title { padding-top: 0; }
+  .contact-form { padding: 1.25rem; }
+  .site-footer { flex-direction: column; padding: 1.25rem 1rem; }
+}
